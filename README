@@ -4,6 +4,8 @@ Sun::Solaris::Kstat for Linux version 0.01
 This is an implementation of the Sun::Solaris::Kstat Perl module
 for Linux ZFS. It should behave identically to the Solaris version.
 
+In this version the hash key has been changed to be compatible with the BSD sysctl 'kstat.zfs.misc.arcstats.xxx' notation.
+
 INSTALLATION
 
 To install this module type the following:
