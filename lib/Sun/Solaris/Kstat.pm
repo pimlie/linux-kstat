@@ -47,9 +47,6 @@ sub update {
       next;
     }
 
-    $self->{$module} = {};
-    $self->{$module}{0} = {};
-
     opendir(MODDIR, $kstat_path . $module) or die $!;
 
     my @files = readdir(MODDIR);
@@ -59,13 +56,11 @@ sub update {
         next;
       }
 
-      $self->{$module}{0}{$file} = {};
-
       open FILE, $kstat_path . "/" . $module . "/" . $file or die $!;
 
       while (<FILE>) {
         if ($_ =~ /^([^ ]+) *(\d+) *(\d+)$/) {
-          $self->{$module}{0}{$file}{$1} = $3;
+          $self->{"kstat.".$module.".misc.".$file.".".$1} = $3;
         }
       }
 
